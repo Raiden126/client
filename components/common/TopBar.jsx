@@ -1,84 +1,86 @@
-"use client"
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
+"use client";
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import { Button } from "@mui/material";
+import { useRouter } from "next-nprogress-bar";
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: "#F0F5FF",
-  '&:hover': {
+  "&:hover": {
     backgroundColor: "#F0F5FF",
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: '70%',
-  },
+  flexGrow: 1, // Let the search bar grow to fill available space
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "#BABEC5",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    color: "#727579",
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    }
+  padding: theme.spacing(1, 1, 1, 0),
+  color: "#727579",
+  paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+  width: "100%", // Ensure the input takes up the full width of the Search component
 }));
 
 export default function TopBar() {
+  const router = useRouter();
+
+  const handleLoginButton = () => {
+    router.push("/login");
+  };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className= "bg-white">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, width: "60px", color: "black" }}
-          >
+    <Box sx={{ flexGrow: 1, overflowX: "hidden" }}>
+      <AppBar position="static" sx={{ backgroundColor: "white" }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6" component="div" sx={{ color: "black" }}>
             MUI
           </Typography>
-          <div className="w-full flex justify-center">
-          <Search sx={{width: "100%"}}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          <div className="w-3/4 flex justify-center">
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </div>
+          <div className="flex justify-center items-center">
+            <Button
+              className="text-xs md:text-sm text-black ml-2 hover:bg-[#07467E] hover:decoration-0 hover:text-white px-4 py-2 rounded-2xl"
+              onClick={handleLoginButton}
+            >
+              <AccountCircleIcon className="mr-1" />
+              Log In
+            </Button>
+            <Button
+              className="text-xs h-10 border-t-4 border-t-[#23E5DB] border-s-4 border-s-[#FFCE32] border-e-4 border-e-[#3A77FF] shadow-xl border-solid md:text-sm text-black bg-white ml-2 px-4 py-2 rounded-2xl"
+            >
+              <StorefrontIcon className="mr-1" />
+              Sell
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

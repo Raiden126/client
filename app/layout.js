@@ -1,6 +1,7 @@
 "use client";
 import "./globals.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import CssBaseline from "@mui/material/CssBaseline";
 import TopBar from "@/components/common/TopBar";
 
@@ -35,6 +36,12 @@ export default function RootLayout({ children }) {
           <CssBaseline />
           <TopBar />
           {children}
+          <ProgressBar
+          height="4px"
+          color="#f58220"
+          options={{ showSpinner: false }}
+          shallowRouting
+        />
         </ThemeProvider>
       </body>
     </html>
