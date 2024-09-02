@@ -50,13 +50,13 @@ export default function TopBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, overflowX: "hidden" }}>
+    <Box sx={{overflowX: "hidden" }}>
       <AppBar position="static" sx={{ backgroundColor: "white" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6" component="div" sx={{ color: "black" }}>
-            MUI
+            LOGO
           </Typography>
-          <div className="w-3/4 flex justify-center">
+          <div className="w-3/5 flex justify-center">
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -69,14 +69,14 @@ export default function TopBar() {
           </div>
           <div className="flex justify-center items-center">
             <Button
-              className="text-xs md:text-sm text-black ml-2 hover:bg-[#07467E] hover:decoration-0 hover:text-white px-4 py-2 rounded-2xl"
+              className="text-xs md:text-sm text-black hover:bg-[#07467E] hover:decoration-0 hover:text-white px-4 py-2 rounded-2xl"
               onClick={handleLoginButton}
             >
               <AccountCircleIcon className="mr-1" />
               Log In
             </Button>
             <Button
-              className="text-xs h-10 border-t-4 border-t-[#23E5DB] border-s-4 border-s-[#FFCE32] border-e-4 border-e-[#3A77FF] shadow-xl border-solid md:text-sm text-black bg-white ml-2 px-4 py-2 rounded-2xl"
+              className="text-xs h-10 border-t-4 border-t-[#23E5DB] ml-2 border-s-4 border-s-[#FFCE32] border-e-4 border-e-[#3A77FF] shadow-xl border-solid md:text-sm text-black bg-white px-4 py-2 rounded-2xl"
             >
               <StorefrontIcon className="mr-1" />
               Sell
